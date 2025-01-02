@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use GuzzleHttp\Middleware;
+
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -33,3 +36,16 @@ Route::get('/verifyOtp',[UserController::class,'VerifyOTPPage']);
 Route::get('/resetPassword',[UserController::class,'ResetPasswordPage'])->middleware(TokenVerificationMiddleware::class);
 Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middleware(TokenVerificationMiddleware::class);
 Route::get('/userProfile',[UserController::class,'ProfilePage'])->middleware(TokenVerificationMiddleware::class);
+
+// category routes
+Route::get('/categoryPage',[DashboardController::class,'CategoryPage'])->middleware(TokenVerificationMiddleware::class);
+
+
+// Category API
+// group middleware
+Route::group(['middleware' => [TokenVerificationMiddleware::class]], function () {
+    Route::get('/category-list',[CategoryController::class,'CategoryList']);
+    Route::post('/category-create',[CategoryController::class,'CategoryCreate']);
+    Route::post('/category-update',[CategoryController::class,'CategoryUpdate']);
+    Route::post('/category-delete',[CategoryController::class,'CategoryDelete']);
+});
