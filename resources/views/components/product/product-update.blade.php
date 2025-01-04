@@ -129,7 +129,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/update-product",formData,config)
+            let res = await axios.post("/product-update",formData,config)
             hideLoader();
 
             if(res.status===200 && res.data===1){

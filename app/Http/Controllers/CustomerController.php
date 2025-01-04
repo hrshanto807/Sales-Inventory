@@ -14,12 +14,16 @@ class CustomerController extends Controller
     function CustomerCreate(Request $request){
 
         $user_id=$request->header('id');
-        return Customer::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'mobile'=>$request->input('mobile'),
-            'user_id'=>$user_id
-        ]);
+        try{
+            return Customer::create([
+                'name'=>$request->input('name'),
+                'email'=>$request->input('email'),
+                'mobile'=>$request->input('mobile'),
+                'user_id'=>$user_id
+            ]);
+        }catch(\Exception $th){
+            return $th->getMessage();
+        }
         
     }
 

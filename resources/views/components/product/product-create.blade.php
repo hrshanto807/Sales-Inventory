@@ -52,7 +52,7 @@
     FillCategoryDropDown();
 
     async function FillCategoryDropDown(){
-        let res = await axios.get("/list-category")
+        let res = await axios.get("/category-list")
         res.data.forEach(function (item,i) {
             let option=`<option value="${item['id']}">${item['name']}</option>`
             $("#productCategory").append(option);
@@ -102,7 +102,7 @@
             }
 
             showLoader();
-            let res = await axios.post("/create-product",formData,config)
+            let res = await axios.post("/product-create",formData,config)
             hideLoader();
 
             if(res.status===201){
