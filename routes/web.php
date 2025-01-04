@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use App\Http\Controllers\UserController;
@@ -49,4 +50,19 @@ Route::group(['middleware' => [TokenVerificationMiddleware::class]], function ()
     Route::post('/category-update',[CategoryController::class,'CategoryUpdate']);
     Route::post('/category-delete',[CategoryController::class,'CategoryDelete']);
     Route::post("/category-by-id",[CategoryController::class,'CategoryByID']);
+});
+
+
+// customer routes
+Route::get('/customerPage',[CustomerController::class,'CustomerPage'])->middleware(TokenVerificationMiddleware::class);
+
+
+// Category API
+// group middleware
+Route::group(['middleware' => [TokenVerificationMiddleware::class]], function () {
+    Route::get('/customer-list',[CustomerController::class,'CustomerList']);
+    Route::post('/customer-create',[CustomerController::class,'CustomerCreate']);
+    Route::post('/customer-update',[CustomerController::class,'CustomerUpdate']);
+    Route::post('/customer-delete',[CustomerController::class,'CustomerDelete']);   
+    Route::post('/customer-by-id',[CustomerController::class,'CustomerByID']);   
 });
