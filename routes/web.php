@@ -38,7 +38,7 @@ Route::get('/dashboard',[DashboardController::class,'DashboardPage'])->middlewar
 Route::get('/userProfile',[UserController::class,'ProfilePage'])->middleware(TokenVerificationMiddleware::class);
 
 // category routes
-Route::get('/categoryPage',[DashboardController::class,'CategoryPage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(TokenVerificationMiddleware::class);
 
 
 // Category API

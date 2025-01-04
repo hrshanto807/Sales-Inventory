@@ -39,15 +39,10 @@ async function getList() {
 
 
     showLoader();
-    let res=await axios.get("/list-category");
+    let res=await axios.get("/category-list");
     hideLoader();
-
-    let tableList=$("#tableList");
-    let tableData=$("#tableData");
-
-    tableData.DataTable().destroy();
-    tableList.empty();
-
+    $("#tableData").DataTable().destroy();
+    $("#tableList").empty();
     res.data.forEach(function (item,index) {
         let row=`<tr>
                     <td>${index+1}</td>
@@ -57,14 +52,13 @@ async function getList() {
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`
-        tableList.append(row)
+        $("#tableList").append(row)
     })
 
     $('.editBtn').on('click', async function () {
            let id= $(this).data('id');
            await FillUpUpdateForm(id)
            $("#update-modal").modal('show');
-
 
     })
 
@@ -74,12 +68,17 @@ async function getList() {
         $("#deleteID").val(id);
     })
 
-    new DataTable('#tableData',{
-       order:[[0,'desc']],
-       lengthMenu:[5,10,15,20,30]
-   });
+
+    new DataTable('#tableData', {
+        lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        pageLength: 10,
+        destroy: true,
+        order:[[0,'desc']]
+    });
 
 }
+
+
 
 
 </script>

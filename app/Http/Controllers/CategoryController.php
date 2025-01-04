@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
     function CategoryPage(){
-        return view('page.dashboard.category-page');
+        return view('pages.dashboard.category-page');
     }
 
    function CategoryList(Request $request){
@@ -42,19 +42,7 @@ class CategoryController extends Controller
     return Category::where('id',$id)->where('user_id',$user_id)->delete();
    }
 
-    // function CategoryDelete(){
-    //     return view('components.category.category-delete');
-    // }
+    
 
-    // function CategoryCreate(){
-    //     return view('components.category.category-create');
-    // }
-
-    // function CategoryUpdate(){
-    //     return view('components.category.category-update');
-    // }
-
-    // function CategoryList(){
-    //     return view('components.category.category-list');
-    // }
+   
 }
