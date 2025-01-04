@@ -48,4 +48,5 @@ Route::group(['middleware' => [TokenVerificationMiddleware::class]], function ()
     Route::post('/category-create',[CategoryController::class,'CategoryCreate']);
     Route::post('/category-update',[CategoryController::class,'CategoryUpdate']);
     Route::post('/category-delete',[CategoryController::class,'CategoryDelete']);
+    Route::post("/category-by-id",[CategoryController::class,'CategoryByID']);
 });
