@@ -74,7 +74,7 @@ Route::get('/productPage',[ProductController::class,'ProductPage'])->middleware(
 // Product API
 // group middleware
 Route::group(['middleware' => [TokenVerificationMiddleware::class]], function () {
-    Route::get('/product-list',[ProductController::class,'ProductList']);
+    Route::get("/product-list",[ProductController::class,'ProductList']);
     Route::post('/product-create',[ProductController::class,'ProductCreate']);
     Route::post('/product-update',[ProductController::class,'ProductUpdate']);
     Route::post('/product-delete',[ProductController::class,'ProductDelete']);   
