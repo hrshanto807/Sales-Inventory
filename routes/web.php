@@ -96,6 +96,9 @@ Route::group(['middleware' => [TokenVerificationMiddleware::class]], function ()
     Route::get('/invoice-select',[InvoiceController::class,'invoiceSelect']);
     Route::post('/invoice-delete',[InvoiceController::class,'invoiceDelete']);   
     Route::post('/invoice-details',[InvoiceController::class,'invoiceDetails']);   
+    Route::get('/summary',[DashboardController::class,'Summary']);   
+    Route::get('/reportPage',[DashboardController::class,'ReportPage']);   
+    Route::get('/sales-report/{FormDate}/{ToDate}',[DashboardController::class,'SaleReport']);   
      
 });
 
