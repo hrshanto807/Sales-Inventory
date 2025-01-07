@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
         // Iterate through each category ID
         foreach ($categoryIds as $categoryId) {
             // Create a specific number of products for each category
-            for ($i = 1; $i <= 2; $i++) { // Adjust '3' for the desired number of products per category
+            for ($i = 1; $i <= 1; $i++) { // Adjust '3' for the desired number of products per category
                 DB::table('products')->insert([
                     'name' => $faker->word, // Random product name
                     'price' => $faker->numberBetween(100, 1000), // Random price

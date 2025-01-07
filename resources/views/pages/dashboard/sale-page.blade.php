@@ -245,7 +245,7 @@
 
 
         async function CustomerList(){
-            let res=await axios.get("/list-customer");
+            let res=await axios.get("/customer-list");
             let customerList=$("#customerList");
             let customerTable=$("#customerTable");
             customerTable.DataTable().destroy();
@@ -282,7 +282,7 @@
 
 
         async function ProductList(){
-            let res=await axios.get("/list-product");
+            let res=await axios.get("/product-list");
             let productList=$("#productList");
             let productTable=$("#productTable");
             productTable.DataTable().destroy();

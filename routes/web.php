@@ -3,10 +3,12 @@
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\InvoiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Models\Invoice;
 use GuzzleHttp\Middleware;
 
 
@@ -79,6 +81,22 @@ Route::group(['middleware' => [TokenVerificationMiddleware::class]], function ()
     Route::post('/product-update',[ProductController::class,'ProductUpdate']);
     Route::post('/product-delete',[ProductController::class,'ProductDelete']);   
     Route::post('/product-by-id',[ProductController::class,'ProductByID']);   
+});
+
+
+// Invoice routes
+Route::get('/invoicePage',[InvoiceController::class,'InvoicePage'])->middleware(TokenVerificationMiddleware::class);
+Route::get('/salePage',[InvoiceController::class,'SalePage'])->middleware(TokenVerificationMiddleware::class);
+
+// Invoice API
+// group middleware
+Route::group(['middleware' => [TokenVerificationMiddleware::class]], function () {
+    
+    Route::post('/invoice-create',[InvoiceController::class,'invoiceCreate']);
+    Route::get('/invoice-select',[InvoiceController::class,'invoiceSelect']);
+    Route::post('/invoice-delete',[InvoiceController::class,'invoiceDelete']);   
+    Route::post('/invoice-details',[InvoiceController::class,'invoiceDetails']);   
+     
 });
 
 
